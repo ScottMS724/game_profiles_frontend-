@@ -16,15 +16,56 @@
     </head>
     <body>
 
-        <h1>My Game Profiles</h1>
+        <h1>My Game Profiles' Page</h1>
 
+        <!-- form for POST request of user inputting new game profile info -->
+        <div class="form-container">
+            <form id="create-game-form">
+                <h4>Create a new Game Profile!</h4>
 
+                <span>Title: </span><input id="input-title" class="input-text" type="text" name="title" value="" placeholder="Enter your game's title.">
+                <br><br>
+
+                <span>Genre:</span> <select id="genres" name="genres">
+                    <option value="1">FPS</option>
+                    <option value="2">MMORPG</option>
+                    <option value="3">RTS</option>
+                    <option value="4">Adventure</option>
+                    <option value="5">Platformer</option>
+                    <option value="6">Action</option>
+                </select>
+                <br><br>
+
+                <span>Image:</span> <input id="image-url" class="input-text" type="text" name="image" value="" placeholder="Enter your game's image URL.">
+                <br><br>
+
+                <textarea id="input-review" name="review" rows="8" cols="80" value="" placeholder="Enter your review for your game."></textarea>
+                <br><br>
+
+                <span>Rating:</span> <select id="rating" name="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <br><br> 
+
+                <input id='create-button' class="submit" type="submit" name="submit" value="Create New Game">
+            </form>
+        </div>
+        ____________________
+
+        <h2>My Game Profiles</h2>
         <!-- div to hold all the game profiles' HTML -->
         <div id="game-container">
             
         </div>
-
-        <!-- form for POST request of user inputting game profile info -->
 
         
     </body>
