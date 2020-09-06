@@ -1,13 +1,13 @@
 const endPoint = "http://localhost:3000/api/v1/games/"
 
 document.addEventListener('DOMContentLoaded', () => {
-    // function call of initial get request of game profiles
+    // function call of initial GET request of game profiles
     getGameProfiles();
 
     // selecting the create new game profile form
     const createNewGameForm = document.querySelector("#create-game-form");
 
-    // event listener on new game profile form to call submit function
+    // event listener on create game profile form to call form handler function upon submit event
     createNewGameForm.addEventListener("submit", (e) =>
         newGameFormHandler(e))
 
@@ -15,36 +15,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// render function for HTML markup of game profiles
-function renderGameProfileHTML(game) {
-    const gameHTMLMarkup = `
-            <div data-id=${game.id}>
-                <h3>${game.attributes.title}</h3>
-                <p>${game.attributes.genre.name}</p>
-                <img src=${game.attributes.image_url} height="200" width="250">
-                <br>
-                <textarea data-id=${game.id} rows="4" cols="50">${game.attributes.review}</textarea>
-                <p>Rating: ${game.attributes.rating}/10</p>
-                <button data-id=${game.id}>Edit</button>
-            </div>
-            <br><br>`;
-
-            document.querySelector('#game-container').innerHTML += gameHTMLMarkup;
-}
-
-// function to get current game profiles
+// function to GET/display current game profiles upon initial website load 
 function getGameProfiles() {
     fetch(endPoint)
     .then(response => response.json())
     .then(games => {
         games.data.forEach(game => {
-            renderGameProfileHTML(game); 
+
+            let newGame = new Game(game, game.attributes);
+            
+            document.querySelector("#game-container").innerHTML += newGame.renderGameProfileHTML(); 
         })
     })
 }
 
-// function to grab user input values for new game profile form and inititate
-// the POST fetch request
+// function to grab user input values for new game profile form and call
+// the POST fetch request function 
 function newGameFormHandler(e) {
     e.preventDefault(); 
     const titleInput = document.querySelector('#input-title').value;
@@ -55,7 +41,7 @@ function newGameFormHandler(e) {
     postFetch(titleInput, genreId, imageInput, reviewInput, ratingInput);
 }
 
-// POST fetch request for #creating a new Game profile
+// function for POST fetch request for #creating a new Game profile
 function postFetch(title, genre_id, image_url, review, rating) {
     const bodyData = {title, genre_id, image_url, review, rating}
     fetch(endPoint, { 
@@ -67,7 +53,9 @@ function postFetch(title, genre_id, image_url, review, rating) {
     .then(game => {
          const gameData = game.data;
 
-         renderGameProfileHTML(gameData);
+         let newGame = new Game(gameData, gameData.attributes) 
+
+         document.querySelector("#game-container").innerHTML += newGame.renderGameProfileHTML(); 
     })
 }
 
