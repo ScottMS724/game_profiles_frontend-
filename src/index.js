@@ -1,7 +1,8 @@
 const endPoint = "http://localhost:3000/api/v1/games/"
 
 document.addEventListener('DOMContentLoaded', () => {
-    // function call of initial GET request of game profiles
+    console.log("DOM Content Loaded. In index.js."); 
+    // function call of initial fetch GET request of game profiles
     getGameProfiles();
 
     // selecting the create new game profile form
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// function to GET/display current game profiles upon initial website load 
+// fetch function to GET/display current game profiles upon initial website load 
 function getGameProfiles() {
     fetch(endPoint)
     .then(response => response.json())
@@ -41,7 +42,7 @@ function newGameFormHandler(e) {
     postFetch(titleInput, genreId, imageInput, reviewInput, ratingInput);
 }
 
-// function for POST fetch request for #creating a new Game profile
+// fetch function for POST request for #creating a new Game profile
 function postFetch(title, genre_id, image_url, review, rating) {
     const bodyData = {title, genre_id, image_url, review, rating}
     fetch(endPoint, { 
