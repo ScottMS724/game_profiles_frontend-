@@ -1,4 +1,4 @@
-const endPoint = "http://localhost:3000/api/v1/games/"
+const endPoint = "http://localhost:3000/api/v1/games/" 
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log("DOM Content Loaded. In index.js."); 
@@ -10,9 +10,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // event listener on create game profile form to call form handler function upon submit event
     createNewGameForm.addEventListener("submit", (e) =>
-        newGameFormHandler(e))
+        newGameFormHandler(e));
 
+    // selecting a specific profiles' delete button and attaching click event listener
+     window.addEventListener("click", (e) => {
+        if (e.target.className == "btn btn-danger") {
+            let deleteButton = e.target 
+            let id = deleteButton.dataset.id 
+            let deleteButtonSelect = document.querySelector(`[data-id="${id}" ]`);
+            // alert("Are you sure? Click the delete button again to confirm the deletion.")
+            deleteButtonSelect.addEventListener("click", (e) => {
+                deleteGameFetch();
+            })
+        }
+    })
 })
+
 
 
 
@@ -60,5 +73,17 @@ function postFetch(title, genre_id, image_url, review, rating) {
     })
 }
 
-
-
+function deleteGameFetch() {
+    console.log("deleteGameFetch() called.")
+    let gameDataId = event.target.dataset.id;
+        fetch(`http://localhost:3000/api/v1/games/${gameDataId}`, {
+            method: "DELETE",
+        })
+            .then((response) => response.json())
+            .then((json) => {
+            let selectedGame = document.querySelector(
+                `.card[data-id="${gameDataId}"]`
+            );
+            selectedGame.remove();
+        });
+}
