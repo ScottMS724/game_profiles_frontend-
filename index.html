@@ -50,8 +50,8 @@
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
           <h4 class="text-white">About</h4>
-          <p class="text-muted">This app allows for creation of your own game profiles for your favorite 
-              video games. Add a picture, write your own review, and add a rating out of 10.
+          <p class="text-muted">This app allows for the creation of your own game profiles for your favorite 
+              video games. Insert a picture, write your own review, and add a rating out of 10.
           </p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
@@ -68,8 +68,8 @@
       <a href="#" class="navbar-brand d-flex align-items-center">
         <strong>Your Game Profiles</strong>
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span><br><small>About/Contact</small>
       </button>
     </div>
   </div>
@@ -78,21 +78,21 @@
 
 <main role="main">
 
-  <section class="jumbotron text-center">
+  <section class="jumbotron text-center bg text-danger"> 
     <div class="container">
         <form id="create-game-form">
             
             <div class="game_form_header">
-                <h4>Create a new Game Profile!</h4>
+                <h2>Create a new Game Profile!</h2>
             </div>
 
             <div class="form-group">
-              <label for="game_title">Title:</label>
+              <b><label for="game_title">Title:</label></b>
               <input type="text" class="form-control" id="input-title" aria-describedby="game_title">
             </div>
 
             <div class="form-group">
-                <label for="select_genre">Genre:</label>
+                <b><label for="select_genre">Genre:</label></b>
                 <select class="form-control" id="genres">
                   <option value="1">FPS</option>
                   <option value="2">MMORPG</option>
@@ -106,17 +106,17 @@
               <br><br>
 
             <div class="form-group">
-              <label for="image_url">Image URL:</label>
+              <b><label for="image_url">Image URL:</label></b>
               <input type="url" class="form-control" id="image-url">
             </div>
 
             <div class="form-group">
-                <label for="game_textarea">Enter your review for your game.</label>
+                <b><label for="game_textarea">Review:</label></b>
                 <textarea class="form-control" id="input-review" rows="3"></textarea>
               </div>
 
               <div class="form-group">
-                <label for="select_rating">Rating:</label>
+                <b><label for="select_rating">Rating:</label>
                 <select class="form-control" id="rating">
                   <option value="1">1</option>
                   <option value="2">2</option>

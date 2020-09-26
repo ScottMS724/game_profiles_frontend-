@@ -31,3 +31,16 @@
   footer p {
     margin-bottom: .25rem;
   }
+  
+  .bg { 
+    /* The image used */
+    background-image: url("https://i.redd.it/vkrscso6c65y.jpg");
+  
+    /* Full height */
+    height: 50%; 
+  
+    /* Center and scale the image */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
