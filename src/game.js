@@ -13,7 +13,7 @@ class Game {
     // render function for card HTML markup of game profiles
     renderGameProfileHTML() {
     return `
-      <div data-id="${this.id} class="card">
+      <div data-id="${this.id}" class="card">
         <div class="col-md-12">
           <div class="card mb-4 shadow-sm">
           <div class="card text-center">

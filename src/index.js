@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // alert("Are you sure? Click the delete button again to confirm the deletion.")
             deleteButtonSelect.addEventListener("click", (e) => {
                 deleteGameFetch();
-                document.location.reload(); 
             })
         }
     })
@@ -68,11 +67,10 @@ function postFetch(title, genre_id, image_url, review, rating) {
     .then(game => {
          const gameData = game.data;
 
-         let newGame = new Game(gameData, gameData.attributes) 
+         let newGame = new Game(gameData.id, gameData.attributes) 
 
          document.querySelector("#game-container").innerHTML += newGame.renderGameProfileHTML(); 
     })
-    document.location.reload(); 
 }
 
 function deleteGameFetch() {
