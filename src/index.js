@@ -1,4 +1,4 @@
-const endPoint = "http://localhost:3000/api/v1/games/" 
+const endPoint = "https://boiling-coast-39752.herokuapp.com/api/v1/games" 
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log("DOM Content Loaded. In index.js."); 
@@ -76,7 +76,7 @@ function postFetch(title, genre_id, image_url, review, rating) {
 function deleteGameFetch() {
     console.log("deleteGameFetch() called.")
     let gameDataId = event.target.dataset.id;
-        fetch(`http://localhost:3000/api/v1/games/${gameDataId}`, {
+        fetch(`https://boiling-coast-39752.herokuapp.com/api/v1/games/${gameDataId}`, {
             method: "DELETE",
         })
             .then((response) => response.json())
